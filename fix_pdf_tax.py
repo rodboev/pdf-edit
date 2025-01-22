@@ -2,6 +2,10 @@ import PyPDF2
 import re
 from pathlib import Path
 import os
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from io import BytesIO
+import pdfrw
 
 def extract_text_from_pdf(pdf_path):
     with open(pdf_path, 'rb') as file:
@@ -22,50 +26,81 @@ def extract_tax_from_total(amount, tax_rate=0.08875):
     tax = round(amount - base, 2)
     return base, tax
 
+def create_overlay_pdf(amounts, width, height):
+    # Create a new PDF in memory
+    packet = BytesIO()
+    c = canvas.Canvas(packet, pagesize=(width, height))
+    
+    # Set font and size
+    c.setFont("Helvetica", 10)
+    
+    # Extract the monthly charge and calculate base/tax
+    monthly_charge = float(amounts[0].replace('$', ''))
+    base, tax = extract_tax_from_total(monthly_charge)
+    
+    # Draw white rectangles to cover original amounts
+    c.setFillColorRGB(1, 1, 1)  # White
+    
+    # Cover the original amounts (adjust coordinates as needed)
+    c.rect(400, 500, 100, 15, fill=1)  # Cover first amount
+    c.rect(400, 450, 100, 15, fill=1)  # Cover second amount
+    c.rect(400, 400, 100, 15, fill=1)  # Cover tax amount
+    
+    # Draw new amounts
+    c.setFillColorRGB(0, 0, 0)  # Black
+    c.drawString(400, 500, f"${base:.2f}")  # First base amount
+    c.drawString(400, 450, f"${base:.2f}")  # Second base amount
+    c.drawString(400, 400, f"${tax*2:.2f}")  # Total tax amount
+    
+    c.save()
+    
+    # Move to the beginning of the BytesIO buffer
+    packet.seek(0)
+    return packet
+
 def fix_pdf_tax(input_pdf_path, output_pdf_path):
-    # Read the PDF
-    reader = PyPDF2.PdfReader(input_pdf_path)
-    writer = PyPDF2.PdfWriter()
+    # Extract text and amounts from input PDF
+    text = extract_text_from_pdf(input_pdf_path)
+    amounts = extract_dollar_amounts(text)
     
-    # Process each page
-    for page in reader.pages:
-        # Get the text content
-        text = page.extract_text()
-        
-        # Find all dollar amounts
-        amounts = extract_dollar_amounts(text)
-        if not amounts:
-            continue
-            
-        # Get the monthly charge (which includes tax)
-        monthly_charge = float(amounts[0].replace('$', ''))
-        base, tax = extract_tax_from_total(monthly_charge)
-        
-        # Create a new content stream
-        content = page.get_contents()
-        if content:
-            # Replace the tax amount ($0.00) with the correct tax ($35.50)
-            content_str = content.get_data().decode('utf-8')
-            content_str = content_str.replace('$0.00', f'${tax*2:.2f}')
-            
-            # Replace the charges that include tax with base amounts
-            content_str = content_str.replace(f'${monthly_charge:.2f}', f'${base:.2f}')
-            
-            # Update the page content
-            page.update({
-                PyPDF2.generic.NameObject('/Contents'): PyPDF2.generic.StreamObject(content_str.encode('utf-8'))
-            })
-        
-        writer.add_page(page)
+    if not amounts:
+        raise ValueError("No dollar amounts found in PDF")
     
-    # Save the modified PDF
+    # Get PDF dimensions from input
+    template_pdf = pdfrw.PdfReader(input_pdf_path)
+    width = float(template_pdf.pages[0].MediaBox[2])
+    height = float(template_pdf.pages[0].MediaBox[3])
+    
+    # Create overlay with new amounts
+    overlay_buffer = create_overlay_pdf(amounts, width, height)
+    overlay_pdf = PyPDF2.PdfReader(overlay_buffer)
+    
+    # Merge original PDF with overlay
+    output = PyPDF2.PdfWriter()
+    
+    # Read the input PDF
+    original = PyPDF2.PdfReader(input_pdf_path)
+    
+    # For each page
+    for i in range(len(original.pages)):
+        # Get the page
+        page = original.pages[i]
+        
+        # Merge with overlay if it's the first page
+        if i == 0:
+            page.merge_page(overlay_pdf.pages[0])
+        
+        # Add to output
+        output.add_page(page)
+    
+    # Write the output PDF
     with open(output_pdf_path, 'wb') as output_file:
-        writer.write(output_file)
+        output.write(output_file)
 
 def process_directory(input_dir='pdfs', output_dir='pdfs'):
     # Process all PDFs in the input directory
     for filename in os.listdir(input_dir):
-        if filename.endswith('.pdf'):
+        if filename.endswith('.pdf') and not filename.endswith('-fixed.pdf'):
             input_path = os.path.join(input_dir, filename)
             # Add -fixed before the .pdf extension
             base_name = filename[:-4]  # remove .pdf
