@@ -3,10 +3,10 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from decimal import Decimal
 import datetime
+import os
 from reportlab.lib.colors import black, white
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from PIL import Image
 
 def create_invoice_pdf(output_path: str, base_amount: float = 200.00, tax_rate: float = 0.08875):
     """Create a new invoice PDF with the specified base amount and tax rate."""
@@ -44,59 +44,42 @@ def create_invoice_pdf(output_path: str, base_amount: float = 200.00, tax_rate: 
     def draw_rect(x, y, w, h, stroke=1, fill=0):
         c.rect(x, height - y - h, w, h, stroke=stroke, fill=fill)
     
-    # Helper function for drawing images
-    def draw_image(image_path, x, y, width, height):
-        img = Image.open(image_path)
-        img_width, img_height = img.size
-        aspect = img_height / float(img_width)
-        
-        # Calculate dimensions to maintain aspect ratio
-        if width is None:
-            width = height / aspect
-        if height is None:
-            height = width * aspect
-            
-        c.drawImage(image_path, x, height - y - height, width=width, height=height)
-    
     # Define alignment points
     price_right_edge = 473 + c.stringWidth("Price", "Helvetica-Bold", 10)  # Right edge of "Price"
     quantity_right_edge = 290 + c.stringWidth("Quantity", "Helvetica-Bold", 10)  # Right edge of "Quantity"
     
-    # Header section
-    draw_text(50, 40, "Liberty Pest Control", size=12, bold=True)  # Moved down to align with Invoice
-    draw_text(50, 55, "8220 17th Avenue")
-    draw_text(50, 70, "Brooklyn, NY 11214")
-    draw_text(50, 85, "800-595-4692")
-    
-    # Logo
-    try:
-        draw_image("pdfs/logo.png", 50, 100, width=150, height=None)
-    except Exception as e:
-        print(f"Warning: Could not load logo image: {e}")
+    # Header section - moved down to align with second Invoice
+    draw_text(50, 65, "Liberty Pest Control", size=12, bold=True)
+    draw_text(50, 80, "8220 17th Avenue")
+    draw_text(50, 95, "Brooklyn, NY 11214")
+    draw_text(50, 110, "800-595-4692")
     
     # Invoice details (top right)
     draw_text(445, 40, "Invoice # 1148151", size=12, bold=True)
     
-    # Evenly spaced invoice details
+    # Evenly spaced invoice details with consistent spacing
     detail_y = 65  # Starting Y position
-    spacing = 20   # Space between items
+    spacing = 15   # Consistent space between items
     
     draw_text(452, detail_y, "Invoice", bold=True)
     draw_text(487, detail_y, "01/10/2025")
     
     detail_y += spacing
     draw_text(460, detail_y, "Date:", bold=True)
-    draw_text(487, detail_y-7, "Friday")  # Aligned with "Date:"
+    draw_text(487, detail_y, "Friday")  # Aligned with baseline
     
     detail_y += spacing
     draw_text(460, detail_y, "Time:", bold=True)
     draw_text(487, detail_y, "10:44 AM")
     
-    # Location and Bill-To
-    draw_text(443, 115, "Location:", size=9, bold=True)
-    draw_text(487, 115, "142877", size=9)
-    draw_text(452, 135, "Bill-To:", size=9, bold=True)
-    draw_text(487, 135, "142877", size=9)
+    detail_y += spacing
+    # Bill-To above Location
+    draw_text(452, detail_y, "Bill-To:", size=9, bold=True)
+    draw_text(487, detail_y, "142877", size=9)  # Bill-To number
+    
+    detail_y += spacing
+    draw_text(443, detail_y, "Location:", size=9, bold=True)
+    draw_text(487, detail_y, "142857", size=9)  # Correct location number
     
     # Customer Info (both columns)
     for x in [55, 280]:
@@ -124,9 +107,9 @@ def create_invoice_pdf(output_path: str, base_amount: float = 200.00, tax_rate: 
     draw_text(quantity_right_edge, y, "1.00", right_align=True)
     draw_text(price_right_edge, y, f"${line_item_base:.2f}", right_align=True)
     
-    # Subtotal section
+    # Subtotal section - moved line up with 0.1" gap
     y = 315
-    draw_line(365, y-8, 500, y-8)  # Line above subtotal, moved up
+    draw_line(365, y-15, 500, y-15)  # Line moved up
     draw_text(366, y, "SUBTOTAL", bold=True)
     draw_text(price_right_edge, y, f"${subtotal:.2f}", right_align=True)
     
@@ -146,20 +129,6 @@ def create_invoice_pdf(output_path: str, base_amount: float = 200.00, tax_rate: 
     draw_text(price_right_edge, y, f"${total_amount:.2f}", right_align=True)
     draw_text(366, y+15, "AMOUNT DUE", bold=True)
     draw_text(price_right_edge, y+15, f"${amount_due:.2f}", right_align=True)
-    
-    # Signature boxes and signatures
-    y = 480
-    signatures_present = True
-    try:
-        draw_image("pdfs/customer_signature.png", 34, y-25, width=150, height=50)
-        draw_image("pdfs/technician_signature.png", 201, y-25, width=150, height=50)
-    except Exception as e:
-        print(f"Warning: Could not load signatures: {e}")
-        signatures_present = False
-    
-    if signatures_present:
-        draw_text(54, y, "CUSTOMER SIGNATURE", size=8)
-        draw_text(221, y, "TECHNICIAN SIGNATURE", size=8)
     
     # Bottom section
     y = 560
@@ -184,18 +153,6 @@ def create_invoice_pdf(output_path: str, base_amount: float = 200.00, tax_rate: 
     for text in ["Liberty Pest Control", "8220 17th Avenue", "Brooklyn, NY 11214", "800-595-4692"]:
         draw_text(64, y, text, size=9)
         y += 10
-    
-    # Try to add barcode from correct.pdf
-    try:
-        draw_image("pdfs/barcode.png", 20, 700, width=100, height=30)
-    except Exception as e:
-        print(f"Warning: Could not load barcode: {e}")
-    
-    # Decorative lines in bottom right
-    y_start = 620
-    for i in range(15):
-        y = y_start + (i * 5)
-        draw_line(575, y, 603, y, 0.5)
     
     # Save the PDF
     c.save()

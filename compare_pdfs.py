@@ -29,6 +29,8 @@ def extract_images_from_pdf(pdf_path):
             output_path = "pdfs/customer_signature.png"
         elif img_index == 2:
             output_path = "pdfs/technician_signature.png"
+        elif img_index == 3:  # If there's a barcode
+            output_path = "pdfs/barcode.png"
         else:
             output_path = f"pdfs/image_{img_index}.png"
         
@@ -79,21 +81,21 @@ def analyze_pdf_text(pdf_path):
 def analyze_differences():
     """Convert both PDFs to images and analyze their differences."""
     # Define paths
-    incorrect_path = "pdfs/incorrect.pdf"
+    correct_path = "pdfs/correct.pdf"  # Changed to use correct.pdf for barcode
     generated_path = "pdfs/generated.pdf"
     incorrect_img_path = "pdfs/incorrect.png"
     generated_img_path = "pdfs/generated.png"
     
     print("Converting PDFs to high-resolution images for analysis...")
-    convert_pdf_to_image(incorrect_path, incorrect_img_path)
+    convert_pdf_to_image(correct_path, incorrect_img_path)
     convert_pdf_to_image(generated_path, generated_img_path)
     
     print("\nExtracting images from original PDF...")
-    extract_images_from_pdf(incorrect_path)
+    extract_images_from_pdf(correct_path)  # Extract from correct.pdf
     
     print("\nAnalyzing text layout and formatting...")
     print("\n=== Original PDF ===")
-    analyze_pdf_text(incorrect_path)
+    analyze_pdf_text(correct_path)
     print("\n=== Generated PDF ===")
     analyze_pdf_text(generated_path)
     
