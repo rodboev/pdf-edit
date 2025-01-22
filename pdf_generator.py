@@ -77,23 +77,19 @@ def extract_invoice_data(source_pdf_path):
             data['customer_address'] = address_lines[2]
             data['customer_city_state'] = address_lines[3].split('Prime')[0].strip()  # Remove duplicate text
     
-    # Extract service items
+    # Extract service items - use a generic pattern for all services
     service_items = []
-    monthly_cost_match = find_match(r'MONTHLY\s+COST\s+(\d+\.\d{2})\s+\$(\d+\.\d{2})', text)
-    if monthly_cost_match:
+    # Look for any service description followed by quantity and price
+    service_pattern = r'([A-Z][A-Z\s]+(?:OR\s+)?[A-Z\s]+?)(?:SERVICE)?\s*(\d+\.\d{2})\s+\$(\d+\.\d{2})'
+    for match in re.finditer(service_pattern, text, re.MULTILINE | re.DOTALL):
+        # Clean up description by removing extra whitespace and newlines
+        description = ' '.join(match.group(1).split())
+        if description.endswith('OR SPECIAL'):
+            description += ' SERVICE'
         service_items.append({
-            'description': 'MONTHLY COST',
-            'quantity': monthly_cost_match.group(1),
-            'price': float(monthly_cost_match.group(2))
-        })
-    
-    # Fix the special service regex pattern to handle newlines better
-    special_service_match = find_match(r'NEW\s+ACCOUNT\s+EQUIPMENT\s+OR\s+SPECIAL\s*\n*\s*SERVICE\s*(\d+\.\d{2})\s+\$(\d+\.\d{2})', text)
-    if special_service_match:
-        service_items.append({
-            'description': 'NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE',  # No newline in description
-            'quantity': special_service_match.group(1),
-            'price': float(special_service_match.group(2))
+            'description': description,
+            'quantity': match.group(2),
+            'price': float(match.group(3))
         })
     data['service_items'] = service_items
     
@@ -158,12 +154,11 @@ def extract_invoice_data(source_pdf_path):
     print(f"City/State: {data['customer_city_state']}")
     
     print("\nService Items:")
-    for item in data['service_items']:
-        print(f"Description: {item['description']}")
-        print(f"Quantity: {item['quantity']}")
-        print(f"Price: ${item['price']:.2f}")
+    for index, item in enumerate(data['service_items'], start=1):
+        print(f"{index}. Description: {item['description']}")
+        print(f"   Quantity: {item['quantity']}")
+        print(f"   Price: ${item['price']:.2f}")
         print()
-    
     print("Amounts:")
     print(f"Subtotal: ${data['amounts']['subtotal']:.2f}")
     print(f"Tax: ${data['amounts']['tax']:.2f}")
