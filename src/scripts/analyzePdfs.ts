@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 
 // Load environment variables from .env.local
-dotenv.config({ path: '.env.local' })
+dotenv.config({ path: path.join(process.cwd(), '.env.local') })
 
 const {
   ServicePrincipalCredentials,
@@ -25,14 +25,16 @@ interface PdfAnalysis {
 
 const TAX_RATE = 0.08875
 
-function createOutputFilePath() {
-  const filePath = "output/ExtractTextInfoFromPDF/"
+function createJsonPath() {
+  const rootDir = process.cwd()
+  const filePath = path.join(rootDir, "src", "docs", "json")
   const date = new Date()
-  const dateString = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" +
-    ("0" + date.getDate()).slice(-2) + "T" + ("0" + date.getHours()).slice(-2) + "-" +
-    ("0" + date.getMinutes()).slice(-2) + "-" + ("0" + date.getSeconds()).slice(-2)
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const year = date.getFullYear() % 100
+  const dateString = `${month}-${day}-${year}`
   fs.mkdirSync(filePath, { recursive: true })
-  return path.join(filePath, `extract${dateString}.zip`)
+  return path.join(filePath, `text-${dateString}.json`)
 }
 
 async function extractTextFromPdf(pdfPath: string): Promise<string> {
@@ -48,7 +50,8 @@ async function extractTextFromPdf(pdfPath: string): Promise<string> {
     const pdfServices = new PDFServices({ credentials })
 
     // Creates an asset from source file and upload
-    readStream = fs.createReadStream(pdfPath)
+    const absolutePdfPath = path.isAbsolute(pdfPath) ? pdfPath : path.join(process.cwd(), pdfPath)
+    readStream = fs.createReadStream(absolutePdfPath)
     const inputAsset = await pdfServices.upload({
       readStream,
       mimeType: MimeType.PDF
@@ -69,28 +72,35 @@ async function extractTextFromPdf(pdfPath: string): Promise<string> {
       resultType: ExtractPDFResult
     })
 
-    // Get content from the resulting asset
+    // Get content stream from the resulting asset
     const resultAsset = pdfServicesResponse.result.resource
     const streamAsset = await pdfServices.getContent({ asset: resultAsset })
 
-    // Save the ZIP file
-    const outputPath = createOutputFilePath()
-    const writeStream = fs.createWriteStream(outputPath)
+    // Create buffer to hold zip data
+    const chunks: Buffer[] = []
     await new Promise((resolve, reject) => {
-      streamAsset.readStream.pipe(writeStream)
-        .on('finish', resolve)
+      streamAsset.readStream
+        .on('data', (chunk: Buffer) => chunks.push(chunk))
+        .on('end', resolve)
         .on('error', reject)
     })
-
-    // Extract text from the ZIP file
-    const zip = new AdmZip(outputPath)
+    
+    // Process zip data in memory
+    const zipBuffer = Buffer.concat(chunks)
+    const zip = new AdmZip(zipBuffer)
     const jsonEntry = zip.getEntries().find((entry: AdmZip.IZipEntry) => entry.entryName.endsWith('structuredData.json'))
     if (!jsonEntry) {
-      throw new Error('Could not find structuredData.json in the ZIP file')
+      throw new Error('Could not find structuredData.json in the ZIP data')
     }
 
-    const jsonContent = JSON.parse(jsonEntry.getData().toString('utf8'))
-    const text = jsonContent.elements
+    // Extract and save JSON
+    const jsonContent = jsonEntry.getData().toString('utf8')
+    const jsonPath = createJsonPath()
+    fs.writeFileSync(jsonPath, jsonContent)
+    
+    // Parse JSON and extract text
+    const parsedJson = JSON.parse(jsonContent)
+    const text = parsedJson.elements
       .filter((el: any) => el.Text)
       .map((el: any) => el.Text)
       .join(' ')
@@ -139,12 +149,12 @@ async function analyzePdf(pdfPath: string): Promise<PdfAnalysis | null> {
 }
 
 async function main() {
-  console.log('Analyzing files: pdfs/correct.pdf and pdfs/incorrect.pdf\n')
+  console.log('Analyzing files: src/docs/invoice-ok.pdf and src/docs/invoice-err.pdf\n')
   console.log('=== Tax Analysis (NYC Rate: 8.875%) ===\n')
 
   // Analyze correct PDF
   console.log('Correct PDF Analysis:')
-  const correctAnalysis = await analyzePdf('pdfs/correct.pdf')
+  const correctAnalysis = await analyzePdf('src/docs/invoice-ok.pdf')
   if (correctAnalysis) {
     console.log(`Base Amount: $${correctAnalysis.baseAmount.toFixed(2)}`)
     console.log(`Tax Amount: $${correctAnalysis.taxAmount.toFixed(2)}`)
@@ -154,10 +164,10 @@ async function main() {
 
   // Analyze incorrect PDF
   console.log('Incorrect PDF Analysis:')
-  const incorrectAnalysis = await analyzePdf('pdfs/incorrect.pdf')
-  if (incorrectAnalysis) {
-    const monthlyBase = incorrectAnalysis.baseAmount / 2
-    const monthlyTax = incorrectAnalysis.taxAmount / 2
+  const errorAnalysis = await analyzePdf('src/docs/invoice-err.pdf')
+  if (errorAnalysis) {
+    const monthlyBase = errorAnalysis.baseAmount / 2
+    const monthlyTax = errorAnalysis.taxAmount / 2
     const monthlyTotal = monthlyBase + monthlyTax
 
     console.log(`Monthly Charge (with baked-in tax): $${monthlyTotal.toFixed(2)}`)
@@ -166,17 +176,17 @@ async function main() {
     console.log(`- Tax Amount: $${monthlyTax.toFixed(2)}\n`)
 
     console.log('Total for two charges:')
-    console.log(`Total Base: $${incorrectAnalysis.baseAmount.toFixed(2)}`)
-    console.log(`Total Tax: $${incorrectAnalysis.taxAmount.toFixed(2)}`)
-    console.log(`Total Amount: $${incorrectAnalysis.totalAmount.toFixed(2)}\n`)
+    console.log(`Total Base: $${errorAnalysis.baseAmount.toFixed(2)}`)
+    console.log(`Total Tax: $${errorAnalysis.taxAmount.toFixed(2)}`)
+    console.log(`Total Amount: $${errorAnalysis.totalAmount.toFixed(2)}\n`)
 
     console.log('The Issue:')
-    console.log(`1. The $${incorrectAnalysis.taxAmount.toFixed(2)} tax is currently hidden within the two $${monthlyTotal.toFixed(2)} charges`)
-    console.log(`2. The tax line shows $0.00 when it should show $${incorrectAnalysis.taxAmount.toFixed(2)}`)
+    console.log(`1. The $${errorAnalysis.taxAmount.toFixed(2)} tax is currently hidden within the two $${monthlyTotal.toFixed(2)} charges`)
+    console.log(`2. The tax line shows $0.00 when it should show $${errorAnalysis.taxAmount.toFixed(2)}`)
     console.log(`3. Need to extract the tax from the charges and display it separately`)
   }
 
-  console.log('\nFile to be corrected: pdfs/incorrect.pdf')
+  console.log('\nFile to be corrected: src/docs/invoice-err.pdf')
 }
 
 main().catch(console.error)
