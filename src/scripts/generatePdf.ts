@@ -2,6 +2,8 @@ import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
 
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
 // Load environment variables from .env.local
 dotenv.config({ path: path.join(process.cwd(), '.env.local') })
 
@@ -9,7 +11,13 @@ const {
   ServicePrincipalCredentials,
   ExecutionContext,
   DocumentMerge,
-  FileRef
+  FileRef,
+  PDFServices,
+  MimeType,
+  ExtractPDFParams,
+  ExtractElementType,
+  ExtractPDFJob,
+  ExtractPDFResult
 } = require('@adobe/pdfservices-node-sdk')
 
 interface InvoiceData {
@@ -38,6 +46,8 @@ interface InvoiceData {
   }
 }
 
+const TAX_RATE = 0.08875
+
 function createDateString() {
   const date = new Date()
   const month = date.getMonth() + 1
@@ -46,10 +56,10 @@ function createDateString() {
   return `${month}-${day}-${year}`
 }
 
+const outputFile = 'invoice-ok.pdf'
 async function generatePDF() {
+  const rootDir = process.cwd()
   try {
-    const rootDir = process.cwd()
-    
     // Initial setup, create credentials instance
     const credentials = new ServicePrincipalCredentials({
       clientId: process.env.ADOBE_API_KEY,
@@ -57,11 +67,11 @@ async function generatePDF() {
     })
 
     // Create an ExecutionContext using credentials
-    const executionContext = ExecutionContext.create(credentials)
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
     // Read the JSON data
     const dateString = createDateString()
-    const jsonPath = path.join(rootDir, "docs", "json", `text-${dateString}.json`)
+    const jsonPath = path.join(rootDir, "src", "docs", "json", `text-${dateString}.json`)
     const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'))
 
     // Transform the JSON data into the format expected by the template
@@ -99,33 +109,42 @@ async function generatePDF() {
     }
 
     // Create a new DocumentMerge options instance
-    const documentMerge = DocumentMerge,
+    const documentMerge = PDFServicesSdk.DocumentMerge,
       documentMergeOptions = documentMerge.options,
-      options = new documentMergeOptions.DocumentMergeOptions(jsonDataForMerge, documentMergeOptions.OutputFormat.PDF)
+      options = new documentMergeOptions.DocumentMergeOptions(jsonDataForMerge, documentMergeOptions.OutputFormat.PDF);
 
     // Create a new operation instance using the options instance
-    const documentMergeOperation = documentMerge.Operation.createNew(options)
+    const documentMergeOperation = documentMerge.Operation.createNew(options);
 
     // Set operation input document template from a source file
-    const templatePath = path.join(rootDir, "docs", "template", "template.docx")
-    const input = FileRef.createFromLocalFile(templatePath)
-    documentMergeOperation.setInput(input)
+    const templatePath = path.join(rootDir, "src", "docs", "template.docx")
+    const input = PDFServicesSdk.FileRef.createFromLocalFile(templatePath);
+    documentMergeOperation.setInput(input);
 
     // Create output directory if it doesn't exist
-    const outputDir = path.join(rootDir, "output")
+    const outputDir = path.join(rootDir, "src", "output")
     fs.mkdirSync(outputDir, { recursive: true })
 
     // Execute the operation and Save the result to the specified location
-    const outputPath = path.join(outputDir, `invoice-${dateString}.pdf`)
+    const outputPath = path.join(outputDir, outputFile)
     await documentMergeOperation.execute(executionContext)
-      .then((result: { saveAsFile: (path: string) => void }) => result.saveAsFile(outputPath))
-
-    console.log(`Successfully generated PDF: ${outputPath}`)
+      .then((result: {
+        saveAsFile: (arg0: string) => any
+      }) => result.saveAsFile(outputPath))
+      .catch((err: any) => {
+        if (err instanceof PDFServicesSdk.Error.ServiceApiError
+          || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+          console.log('Exception encountered while executing operation', err);
+        } else {
+          console.log('Exception encountered while executing operation', err);
+        }
+      });
   } catch (err) {
-    console.error('Exception encountered while executing operation', err)
-    throw err
+    console.log('Exception encountered while executing operation', err);
   }
 }
+
+console.log(`Successfully generated PDF: ${outputFile}`)
 
 async function main() {
   // Ensure output directory exists
@@ -137,4 +156,4 @@ async function main() {
   await generatePDF()
 }
 
-main().catch(console.error) 
+main().catch(console.error)
