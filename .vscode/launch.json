@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "name": "ts-node",
+            "name": "tsx",
             "type": "node",
             "request": "launch",
             "args": [
@@ -14,7 +14,7 @@
             ],
             "runtimeArgs": [
                 "-r",
-                "ts-node/register"
+                "tsx"
             ],
             "cwd": "${workspaceRoot}",
             "protocol": "inspector",

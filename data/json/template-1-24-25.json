@@ -1,0 +1,36 @@
+{
+  "invoice": {
+    "number": "1148151",
+    "date": "01/10/2025",
+    "time": "10:44 AM",
+    "billTo": {
+      "name": "Prime Produce Community Center",
+      "contact": "Renee Keitt",
+      "address": "424 W 54th St",
+      "cityStateZip": "New York, NY 10019-4406"
+    },
+    "location": {
+      "name": "Prime Produce Community Center",
+      "contact": "Renee Keitt",
+      "address": "424 W 54th St",
+      "cityStateZip": "New York, NY 10019-4406"
+    },
+    "items": [
+      {
+        "description": "MONTHLY COST",
+        "quantity": "1.00",
+        "price": "200.00"
+      },
+      {
+        "description": "NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE",
+        "quantity": "1.00",
+        "price": "200.00"
+      }
+    ],
+    "subtotal": "400.00",
+    "tax": "35.50",
+    "amountPaid": "435.50",
+    "total": "0.00",
+    "amountDue": "0.00"
+  }
+}

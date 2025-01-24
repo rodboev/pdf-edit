@@ -1,0 +1,2535 @@
+{
+  "version": {
+    "json_export": "210",
+    "page_segmentation": "55",
+    "schema": "1.1.0",
+    "structure": "1.1125.0",
+    "table_structure": "5"
+  },
+  "extended_metadata": {
+    "ID_instance": "5F 96 91 C5 DD BB B2 11 0A 00 05 FD 58 7C AC 6A ",
+    "ID_permanent": "18 D3 56 FC 08 15 B3 44 A6 1C 60 5E 38 F3 77 42 ",
+    "has_acroform": false,
+    "has_embedded_files": false,
+    "is_XFA": false,
+    "is_certified": false,
+    "is_encrypted": false,
+    "is_digitally_signed": false,
+    "language": "en",
+    "page_count": 1,
+    "pdf_version": "1.6",
+    "pdfa_compliance_level": "",
+    "pdfua_compliance_level": ""
+  },
+  "elements": [
+    {
+      "Bounds": [
+        54,
+        689.4600067138672,
+        252,
+        744.9000091552734
+      ],
+      "ObjectID": 48,
+      "Page": 0,
+      "Path": "//Document/Sect/Figure",
+      "attributes": {
+        "BBox": [
+          53.99779999999919,
+          689.5239999999758,
+          251.98999999999796,
+          744.9619999999995
+        ],
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        256.32000732421875,
+        721.7369995117188,
+        338.56199645996094,
+        754.7220001220703
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 49,
+      "Page": 0,
+      "Path": "//Document/Sect/P",
+      "Text": "Liberty Pest Control 8220 17th Avenue Brooklyn, NY 11214 ",
+      "TextSize": 9
+    },
+    {
+      "Bounds": [
+        256.32000732421875,
+        711.3869934082031,
+        314.60400390625,
+        723.6719970703125
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 50,
+      "Page": 0,
+      "Path": "//Document/Sect/P[2]",
+      "Text": "800-595-4692 ",
+      "TextSize": 9
+    },
+    {
+      "Bounds": [
+        55.44000244140625,
+        663.0870056152344,
+        194.66099548339844,
+        675.3719940185547
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 52,
+      "Page": 0,
+      "Path": "//Document/Sect/P[3]/Sub",
+      "Text": "Prime Produce Community Center ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        55.44000244140625,
+        652.7369995117188,
+        104.67900085449219,
+        665.0220031738281
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 53,
+      "Page": 0,
+      "Path": "//Document/Sect/P[3]/Sub[2]",
+      "Text": "Renee Keitt ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        55.44000244140625,
+        642.3869934082031,
+        114.66000366210938,
+        654.6719970703125
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 54,
+      "Page": 0,
+      "Path": "//Document/Sect/P[3]/Sub[3]",
+      "Text": "424 W 54th St ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        55.44000244140625,
+        632.0370025634766,
+        164.6820068359375,
+        644.3220062255859
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 55,
+      "Page": 0,
+      "Path": "//Document/Sect/P[3]/Sub[4]",
+      "Text": "New York, NY 10019-4406 ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        280.8000030517578,
+        663.0870056152344,
+        417.0240020751953,
+        675.3719940185547
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 57,
+      "Page": 0,
+      "Path": "//Document/Sect/P[4]/Sub",
+      "Text": "Prime Produce Community Cente ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        280.8000030517578,
+        652.7369995117188,
+        330.03900146484375,
+        665.0220031738281
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 58,
+      "Page": 0,
+      "Path": "//Document/Sect/P[4]/Sub[2]",
+      "Text": "Renee Keitt ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        280.8000030517578,
+        642.3869934082031,
+        340.02000427246094,
+        654.6719970703125
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 59,
+      "Page": 0,
+      "Path": "//Document/Sect/P[4]/Sub[3]",
+      "Text": "424 W 54th St ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        280.8000030517578,
+        632.0370025634766,
+        390.04200744628906,
+        644.3220062255859
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 60,
+      "Page": 0,
+      "Path": "//Document/Sect/P[4]/Sub[4]",
+      "Text": "New York, NY 10019-4406 ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        445.16200256347656,
+        763.1679992675781,
+        549.4900054931641,
+        780.3520050048828
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 61,
+      "Page": 0,
+      "Path": "//Document/Sect/P[5]",
+      "Text": "Invoice # 1148151 ",
+      "TextSize": 12,
+      "attributes": {
+        "LineHeight": 14.375,
+        "TextAlign": "End"
+      }
+    },
+    {
+      "Bounds": [
+        451.8939971923828,
+        727.6679992675781,
+        533.7220001220703,
+        750.906005859375
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 62,
+      "Page": 0,
+      "Path": "//Document/Sect/P[6]",
+      "Text": "Invoice 01/10/2025 Date: Friday ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 8.625,
+        "SpaceAfter": 2.5
+      }
+    },
+    {
+      "Bounds": [
+        459.5709991455078,
+        715.4279937744141,
+        527.1970062255859,
+        728.3159942626953
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 63,
+      "Page": 0,
+      "Path": "//Document/Sect/P[7]",
+      "Text": "Time: 10:44 AM ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75,
+        "SpaceAfter": 8.75,
+        "TextAlign": "Center"
+      }
+    },
+    {
+      "Bounds": [
+        451.91200256347656,
+        695.843994140625,
+        518.7279968261719,
+        710.0279998779297
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 64,
+      "Page": 0,
+      "Path": "//Document/Sect/P[8]",
+      "Text": "Bill-To: 142877 ",
+      "TextSize": 9,
+      "attributes": {
+        "SpaceAfter": 10.875
+      }
+    },
+    {
+      "Bounds": [
+        443.0740051269531,
+        671.2920074462891,
+        518.7279968261719,
+        686.9880065917969
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 65,
+      "Page": 0,
+      "Path": "//Document/Sect/P[9]",
+      "Text": "Location: 142877 ",
+      "TextSize": 9
+    },
+    {
+      "Bounds": [
+        17.910003662109375,
+        474.92799377441406,
+        499.60499572753906,
+        608.9230041503906
+      ],
+      "ObjectID": 67,
+      "Page": 0,
+      "Path": "//Document/Sect/Table",
+      "attributes": {
+        "BBox": [
+          15.71939999999995,
+          593.6479999999865,
+          443.8619999999937,
+          609.8469999999797
+        ],
+        "NumCol": 5,
+        "NumRow": 8,
+        "Placement": "Block",
+        "SpaceAfter": 18
+      }
+    },
+    {
+      "Bounds": [
+        17.914993286132812,
+        594.6029968261719,
+        113.70500183105469,
+        608.9230041503906
+      ],
+      "ObjectID": 69,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH",
+      "attributes": {
+        "BBox": [
+          14.15939999999955,
+          593.6479999999865,
+          280.54899999999907,
+          609.8469999999797
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 0,
+        "Height": 16.25,
+        "InlineAlign": "Start",
+        "RowIndex": 0,
+        "Width": 266.375
+      }
+    },
+    {
+      "Bounds": [
+        17.914993286132812,
+        594.6029968261719,
+        113.70500183105469,
+        608.9230041503906
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 70,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH/P",
+      "Text": "Service Description ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        289.80499267578125,
+        594.6029968261719,
+        332.8249969482422,
+        608.9230041503906
+      ],
+      "ObjectID": 71,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH[2]",
+      "attributes": {
+        "BBox": [
+          280.54899999999907,
+          593.6479999999865,
+          443.8619999999937,
+          609.8469999999797
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 1,
+        "ColSpan": 2,
+        "Height": 16.25,
+        "InlineAlign": "Start",
+        "RowIndex": 0,
+        "Width": 163.375
+      }
+    },
+    {
+      "Bounds": [
+        289.80499267578125,
+        594.6029968261719,
+        332.8249969482422,
+        608.9230041503906
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 72,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH[2]/P",
+      "Text": "Quantity ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        472.6649932861328,
+        594.6029968261719,
+        499.60499572753906,
+        608.9230041503906
+      ],
+      "ObjectID": 73,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH[3]",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          593.6479999999865,
+          580.0559999999823,
+          609.8469999999797
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 16.25,
+        "InlineAlign": "Start",
+        "RowIndex": 0,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        472.6649932861328,
+        594.6029968261719,
+        499.60499572753906,
+        608.9230041503906
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 74,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR/TH[3]/P",
+      "Text": "Price ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        17.910003662109375,
+        579.5540008544922,
+        99.78999328613281,
+        593.2039947509766
+      ],
+      "ObjectID": 76,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD",
+      "attributes": {
+        "BBox": [
+          15.71939999999995,
+          577.0889999999781,
+          280.54899999999907,
+          593.6479999999865
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 0,
+        "Height": 16.5,
+        "InlineAlign": "Start",
+        "RowIndex": 1,
+        "Width": 264.875
+      }
+    },
+    {
+      "Bounds": [
+        17.910003662109375,
+        579.5540008544922,
+        99.78999328613281,
+        593.2039947509766
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 77,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD/P",
+      "Text": "MONTHLY COST ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        307.8999938964844,
+        577.9839935302734,
+        329.8500061035156,
+        591.6340026855469
+      ],
+      "ObjectID": 78,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD[2]",
+      "attributes": {
+        "BBox": [
+          280.54899999999907,
+          577.0889999999781,
+          443.8619999999937,
+          593.6479999999865
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 2,
+        "ColSpan": 2,
+        "Height": 16.5,
+        "InlineAlign": "Start",
+        "RowIndex": 1,
+        "Width": 163.375
+      }
+    },
+    {
+      "Bounds": [
+        307.8999938964844,
+        577.9839935302734,
+        329.8500061035156,
+        591.6340026855469
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 79,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD[2]/P",
+      "Text": "1.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        460.27000427246094,
+        577.9839935302734,
+        498.9100036621094,
+        591.6340026855469
+      ],
+      "ObjectID": 80,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD[3]",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          577.0889999999781,
+          580.0559999999823,
+          593.6479999999865
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 4,
+        "Height": 16.5,
+        "InlineAlign": "Start",
+        "RowIndex": 1,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        460.27000427246094,
+        577.9839935302734,
+        498.9100036621094,
+        591.6340026855469
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 81,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[2]/TD[3]/P",
+      "Text": "$200.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        17.910003662109375,
+        553.0540008544922,
+        220.77999877929688,
+        578.2039947509766
+      ],
+      "ObjectID": 83,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD",
+      "attributes": {
+        "BBox": [
+          15.71939999999995,
+          550.2099999999919,
+          280.54899999999907,
+          577.0889999999781
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Before",
+        "ColIndex": 0,
+        "Height": 26.875,
+        "InlineAlign": "Start",
+        "RowIndex": 2,
+        "Width": 264.875
+      }
+    },
+    {
+      "Bounds": [
+        17.910003662109375,
+        553.0540008544922,
+        220.77999877929688,
+        578.2039947509766
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 84,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD/P",
+      "Text": "NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 11.5
+      }
+    },
+    {
+      "Bounds": [
+        307.8999938964844,
+        562.9839935302734,
+        329.8500061035156,
+        576.6340026855469
+      ],
+      "ObjectID": 85,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD[2]",
+      "attributes": {
+        "BBox": [
+          280.54899999999907,
+          550.2099999999919,
+          363.1049999999959,
+          577.0889999999781
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Before",
+        "ColIndex": 2,
+        "Height": 26.875,
+        "InlineAlign": "Center",
+        "RowIndex": 2,
+        "Width": 82.375
+      }
+    },
+    {
+      "Bounds": [
+        307.8999938964844,
+        562.9839935302734,
+        329.8500061035156,
+        576.6340026855469
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 86,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD[2]/P",
+      "Text": "1.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "ObjectID": 87,
+      "Path": "//Document/Sect/Table/TR[3]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          549.8499999999767,
+          443.8619999999937,
+          577.0889999999781
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Before",
+        "BorderColor": [
+          null,
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "None",
+          "Solid",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0,
+          0.375,
+          0,
+          0
+        ],
+        "ColIndex": 3,
+        "Height": 27.25,
+        "InlineAlign": "Start",
+        "RowIndex": 2,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        460.27000427246094,
+        562.9839935302734,
+        498.9100036621094,
+        576.6340026855469
+      ],
+      "ObjectID": 88,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD[3]",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          549.8499999999767,
+          580.0559999999823,
+          577.0889999999781
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Before",
+        "BorderColor": [
+          null,
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "None",
+          "Solid",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0,
+          0.375,
+          0,
+          0
+        ],
+        "ColIndex": 4,
+        "Height": 27.25,
+        "InlineAlign": "Start",
+        "RowIndex": 2,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        460.27000427246094,
+        562.9839935302734,
+        498.9100036621094,
+        576.6340026855469
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 89,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[3]/TD[3]/P",
+      "Text": "$200.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        365.7489929199219,
+        535.1080017089844,
+        422.6390075683594,
+        549.4279937744141
+      ],
+      "ObjectID": 91,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[4]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          534.25,
+          443.8619999999937,
+          550.6899999999732
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "BorderColor": [
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "Solid",
+          "None",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0.375,
+          0,
+          0,
+          0
+        ],
+        "ColIndex": 3,
+        "Height": 16.5,
+        "InlineAlign": "Start",
+        "RowIndex": 3,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        365.7489929199219,
+        535.1080017089844,
+        422.6390075683594,
+        549.4279937744141
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 92,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[4]/TH/P",
+      "Text": "SUBTOTAL ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        459.65899658203125,
+        535.6179962158203,
+        498.2989959716797,
+        549.2680053710938
+      ],
+      "ObjectID": 93,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[4]/TD",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          534.25,
+          580.0559999999823,
+          550.6899999999732
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "BorderColor": [
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "Solid",
+          "None",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0.375,
+          0,
+          0,
+          0
+        ],
+        "ColIndex": 4,
+        "Height": 16.5,
+        "InlineAlign": "Start",
+        "RowIndex": 3,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        459.65899658203125,
+        535.6179962158203,
+        498.2989959716797,
+        549.2680053710938
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 94,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[4]/TD/P",
+      "Text": "$435.50 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        365.7489929199219,
+        519.3679962158203,
+        388.22900390625,
+        533.6880035400391
+      ],
+      "ObjectID": 96,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[5]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          518.8909999999742,
+          443.8619999999937,
+          534.25
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 15.375,
+        "InlineAlign": "Start",
+        "RowIndex": 4,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        365.7489929199219,
+        519.3679962158203,
+        388.22900390625,
+        533.6880035400391
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 97,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[5]/TH/P",
+      "Text": "TAX ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        470.7689971923828,
+        519.8780059814453,
+        498.28900146484375,
+        533.5279998779297
+      ],
+      "ObjectID": 98,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[5]/TD",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          518.8909999999742,
+          580.0559999999823,
+          534.25
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 4,
+        "Height": 15.375,
+        "InlineAlign": "Start",
+        "RowIndex": 4,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        470.7689971923828,
+        519.8780059814453,
+        498.28900146484375,
+        533.5279998779297
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 99,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[5]/TD/P",
+      "Text": "$0.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        503.6280059814453,
+        416.5489959716797,
+        517.947998046875
+      ],
+      "ObjectID": 101,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[6]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          503.53199999999197,
+          443.8619999999937,
+          518.8909999999742
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 15.375,
+        "InlineAlign": "Start",
+        "RowIndex": 5,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        503.6280059814453,
+        416.5489959716797,
+        517.947998046875
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 102,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[6]/TH/P",
+      "Text": "AMT PAID ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        453.0090026855469,
+        504.8580017089844,
+        498.2989959716797,
+        518.5079956054688
+      ],
+      "ObjectID": 103,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[6]/TD",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          503.53199999999197,
+          580.0559999999823,
+          518.8909999999742
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 4,
+        "Height": 15.375,
+        "InlineAlign": "Start",
+        "RowIndex": 5,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        453.0090026855469,
+        504.8580017089844,
+        498.2989959716797,
+        518.5079956054688
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 104,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[6]/TD/P",
+      "Text": "($435.50) ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        487.88800048828125,
+        401.5489959716797,
+        502.20799255371094
+      ],
+      "ObjectID": 106,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[7]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          489.49199999999837,
+          443.8619999999937,
+          503.53199999999197
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 14,
+        "InlineAlign": "Start",
+        "RowIndex": 6,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        487.88800048828125,
+        401.5489959716797,
+        502.20799255371094
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 107,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[7]/TH/P",
+      "Text": "TOTAL ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        470.78900146484375,
+        489.1179962158203,
+        498.2989959716797,
+        502.76800537109375
+      ],
+      "ObjectID": 108,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[7]/TD",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          489.49199999999837,
+          580.0559999999823,
+          503.53199999999197
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 4,
+        "Height": 14,
+        "InlineAlign": "Start",
+        "RowIndex": 6,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        470.78900146484375,
+        489.1179962158203,
+        498.2989959716797,
+        502.76800537109375
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 109,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[7]/TD/P",
+      "Text": "$0.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        53.938995361328125,
+        478.3240051269531,
+        150.5229949951172,
+        489.24400329589844
+      ],
+      "ObjectID": 111,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD",
+      "attributes": {
+        "BBox": [
+          15.71939999999995,
+          478.6929999999993,
+          191.99199999999837,
+          489.9719999999943
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "BorderColor": [
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "Solid",
+          "None",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0.375,
+          0,
+          0,
+          0
+        ],
+        "ColIndex": 0,
+        "Height": 11.25,
+        "InlineAlign": "Start",
+        "RowIndex": 7,
+        "Width": 176.25
+      }
+    },
+    {
+      "Bounds": [
+        53.938995361328125,
+        478.3240051269531,
+        150.5229949951172,
+        489.24400329589844
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 112,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD/P",
+      "Text": "CUSTOMER SIGNATURE ",
+      "TextSize": 8,
+      "attributes": {
+        "LineHeight": 9.625
+      }
+    },
+    {
+      "Bounds": [
+        221.10699462890625,
+        478.3240051269531,
+        320.7949981689453,
+        489.24400329589844
+      ],
+      "ObjectID": 113,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD[2]",
+      "attributes": {
+        "BBox": [
+          191.99199999999837,
+          478.6929999999993,
+          363.1049999999959,
+          489.9719999999943
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "BorderColor": [
+          [
+            0,
+            0,
+            0
+          ],
+          null,
+          null,
+          null
+        ],
+        "BorderStyle": [
+          "Solid",
+          "None",
+          "None",
+          "None"
+        ],
+        "BorderThickness": [
+          0.375,
+          0,
+          0,
+          0
+        ],
+        "ColIndex": 1,
+        "ColSpan": 2,
+        "Height": 11.25,
+        "InlineAlign": "Center",
+        "RowIndex": 7,
+        "Width": 171.125
+      }
+    },
+    {
+      "Bounds": [
+        221.10699462890625,
+        478.3240051269531,
+        320.7949981689453,
+        489.24400329589844
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 114,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD[2]/P",
+      "Text": "TECHNICIAN SIGNATURE ",
+      "TextSize": 8,
+      "attributes": {
+        "LineHeight": 9.625
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        474.92799377441406,
+        435.98899841308594,
+        489.2480010986328
+      ],
+      "ObjectID": 115,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TH",
+      "attributes": {
+        "BBox": [
+          363.1049999999959,
+          478.6929999999993,
+          443.8619999999937,
+          489.49199999999837
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "After",
+        "ColIndex": 3,
+        "Height": 10.75,
+        "InlineAlign": "Start",
+        "RowIndex": 7,
+        "Width": 80.75
+      }
+    },
+    {
+      "Bounds": [
+        365.7590026855469,
+        474.92799377441406,
+        435.98899841308594,
+        489.2480010986328
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 116,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TH/P",
+      "Text": "AMOUNT DUE ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        470.65899658203125,
+        474.92799377441406,
+        498.16900634765625,
+        489.2480010986328
+      ],
+      "ObjectID": 117,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD[3]",
+      "attributes": {
+        "BBox": [
+          443.8619999999937,
+          478.6929999999993,
+          580.0559999999823,
+          489.49199999999837
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "After",
+        "ColIndex": 4,
+        "Height": 10.75,
+        "InlineAlign": "Start",
+        "RowIndex": 7,
+        "Width": 136.25
+      }
+    },
+    {
+      "Bounds": [
+        470.65899658203125,
+        474.92799377441406,
+        498.16900634765625,
+        489.2480010986328
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial,Bold",
+        "subset": true,
+        "weight": 700
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 118,
+      "Page": 0,
+      "Path": "//Document/Sect/Table/TR[8]/TD[3]/P",
+      "Text": "$0.00 ",
+      "TextSize": 10,
+      "attributes": {
+        "LineHeight": 12
+      }
+    },
+    {
+      "Bounds": [
+        19.225997924804688,
+        82.16099548339844,
+        524.8009948730469,
+        233.04600524902344
+      ],
+      "ObjectID": 119,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]",
+      "attributes": {
+        "BBox": [
+          19.19919999999911,
+          59.78979999999865,
+          570.6969999999856,
+          233.7829999999958
+        ],
+        "NumCol": 4,
+        "NumRow": 4,
+        "Placement": "Block",
+        "SpaceAfter": 18
+      }
+    },
+    {
+      "Bounds": [
+        19.225997924804688,
+        82.16099548339844,
+        202.97900390625,
+        211.89599609375
+      ],
+      "ObjectID": 121,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD",
+      "attributes": {
+        "BBox": [
+          19.19919999999911,
+          63.38959999999861,
+          270.58899999999267,
+          233.7829999999958
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 0,
+        "ColSpan": 2,
+        "Height": 170.375,
+        "InlineAlign": "Start",
+        "RowIndex": 0,
+        "RowSpan": 4,
+        "Width": 251.375
+      }
+    },
+    {
+      "Bounds": [
+        19.225997924804688,
+        199.61099243164062,
+        202.97900390625,
+        211.89599609375
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 123,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P/Sub",
+      "Text": "Bill-To: Prime Produce Community Center ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        189.26100158691406,
+        112.99699401855469,
+        201.54600524902344
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 124,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P/Sub[2]",
+      "Text": "Renee Keitt ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        178.91099548339844,
+        122.97799682617188,
+        191.1959991455078
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 125,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P/Sub[3]",
+      "Text": "424 W 54th St ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        168.56100463867188,
+        173,
+        180.8459930419922
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 126,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P/Sub[4]",
+      "Text": "New York, NY 10019-4406 ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        113.21099853515625,
+        144.98300170898438,
+        125.49600219726562
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 128,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P[2]/Sub",
+      "Text": "Liberty Pest Control ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        102.86099243164062,
+        139.02499389648438,
+        115.14599609375
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 129,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P[2]/Sub[2]",
+      "Text": "8220 17th Avenue ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        92.51100158691406,
+        146,
+        104.79600524902344
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 130,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P[2]/Sub[3]",
+      "Text": "Brooklyn, NY 11214 ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        63.75799560546875,
+        82.16099548339844,
+        122.04200744628906,
+        94.44599914550781
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "ObjectID": 131,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TD/P[2]/Sub[4]",
+      "Text": "800-595-4692 ",
+      "TextSize": 9,
+      "attributes": {
+        "Placement": "Block"
+      }
+    },
+    {
+      "Bounds": [
+        332.75,
+        219.88800048828125,
+        365.0240020751953,
+        232.17300415039062
+      ],
+      "ObjectID": 132,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TH",
+      "attributes": {
+        "BBox": [
+          270.58899999999267,
+          217.70299999999406,
+          429.5829999999987,
+          233.7829999999958
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 2,
+        "Height": 16.125,
+        "InlineAlign": "Center",
+        "RowIndex": 0,
+        "Width": 159
+      }
+    },
+    {
+      "Bounds": [
+        332.75,
+        219.88800048828125,
+        365.0240020751953,
+        232.17300415039062
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 133,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TH/P",
+      "Text": "142877 ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75
+      }
+    },
+    {
+      "Bounds": [
+        477.5330047607422,
+        220.76100158691406,
+        524.8009948730469,
+        233.04600524902344
+      ],
+      "ObjectID": 134,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TH[2]",
+      "attributes": {
+        "BBox": [
+          429.5829999999987,
+          217.70299999999406,
+          570.6969999999856,
+          233.7829999999958
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 16.125,
+        "InlineAlign": "Center",
+        "RowIndex": 0,
+        "Width": 141.125
+      }
+    },
+    {
+      "Bounds": [
+        477.5330047607422,
+        220.76100158691406,
+        524.8009948730469,
+        233.04600524902344
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 135,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR/TH[2]/P",
+      "Text": "01/10/2025 ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75
+      }
+    },
+    {
+      "Bounds": [
+        272.7380065917969,
+        203.84100341796875,
+        324.9649963378906,
+        216.12600708007812
+      ],
+      "ObjectID": 137,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[2]/TD",
+      "attributes": {
+        "BBox": [
+          270.58899999999267,
+          200.5439999999944,
+          429.5829999999987,
+          217.70299999999406
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 2,
+        "Height": 17.125,
+        "InlineAlign": "Start",
+        "RowIndex": 1,
+        "Width": 159
+      }
+    },
+    {
+      "Bounds": [
+        272.7380065917969,
+        203.84100341796875,
+        324.9649963378906,
+        216.12600708007812
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 138,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[2]/TD/P",
+      "Text": "PO Number: ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75
+      }
+    },
+    {
+      "Bounds": [
+        434.9720001220703,
+        203.84100341796875,
+        514.8110046386719,
+        216.12600708007812
+      ],
+      "ObjectID": 139,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[2]/TD[2]",
+      "attributes": {
+        "BBox": [
+          429.5829999999987,
+          200.5439999999944,
+          570.6969999999856,
+          217.70299999999406
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Middle",
+        "ColIndex": 3,
+        "Height": 17.125,
+        "InlineAlign": "Start",
+        "RowIndex": 1,
+        "Width": 141.125
+      }
+    },
+    {
+      "Bounds": [
+        434.9720001220703,
+        203.84100341796875,
+        514.8110046386719,
+        216.12600708007812
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 140,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[2]/TD[2]/P",
+      "Text": "Invoice #: 1148151 ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75
+      }
+    },
+    {
+      "Bounds": [
+        294.7519989013672,
+        185.12100219726562,
+        358.36399841308594,
+        197.406005859375
+      ],
+      "ObjectID": 142,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[3]/TD",
+      "attributes": {
+        "BBox": [
+          270.58899999999267,
+          59.78979999999865,
+          423.9429999999993,
+          200.5439999999944
+        ],
+        "BackgroundColor": [
+          1,
+          1,
+          1
+        ],
+        "BlockAlign": "Before",
+        "ColIndex": 2,
+        "Height": 140.75,
+        "InlineAlign": "Start",
+        "RowIndex": 2,
+        "RowSpan": 2,
+        "Width": 153.375
+      }
+    },
+    {
+      "Bounds": [
+        294.7519989013672,
+        185.12100219726562,
+        358.36399841308594,
+        197.406005859375
+      ],
+      "Font": {
+        "alt_family_name": "Arial",
+        "embedded": true,
+        "encoding": "Identity-H",
+        "family_name": "Arial",
+        "font_type": "CIDFontType2",
+        "italic": false,
+        "monospaced": false,
+        "name": "DEVEXP+Arial",
+        "subset": true,
+        "weight": 400
+      },
+      "HasClip": false,
+      "Lang": "en",
+      "ObjectID": 143,
+      "Page": 0,
+      "Path": "//Document/Sect/Table[2]/TR[3]/TD/P",
+      "Text": "Terms: NET 30 ",
+      "TextSize": 9,
+      "attributes": {
+        "LineHeight": 10.75
+      }
+    }
+  ],
+  "pages": [
+    {
+      "boxes": {
+        "CropBox": [
+          0,
+          0,
+          612,
+          792
+        ],
+        "MediaBox": [
+          0,
+          0,
+          612,
+          792
+        ]
+      },
+      "height": 792,
+      "is_scanned": false,
+      "page_number": 0,
+      "rotation": 0,
+      "width": 612
+    }
+  ]
+}
