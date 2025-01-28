@@ -18,7 +18,6 @@ function createDateString() {
 const rootDir = process.cwd()
 const dateString = createDateString()
 const templatePath = path.join(rootDir, "src", "docs", "template.docx")
-const templateDataPath = path.join(rootDir, "data", "json", "template-data.json")
 const datedTemplateDataPath = path.join(rootDir, "data", "json", `template-${dateString}.json`)
 const outputPath = path.join(rootDir, "output", `invoice-${dateString}.pdf`)
 
@@ -49,6 +48,18 @@ interface PdfAnalysis {
 interface ExtractedData {
   text: string
   jsonContent: string
+}
+
+interface LineItem {
+  service: string
+  price: string
+}
+
+interface TemplateData {
+  items: LineItem[]
+  subtotal: string
+  tax: string
+  paid: string
 }
 
 function extractDollarAmounts(text: string): string[] {
@@ -135,6 +146,52 @@ async function extractTextFromPdf(pdfPath: string): Promise<ExtractedData> {
   }
 }
 
+async function extractLineItems(text: string): Promise<LineItem[]> {
+  const lines = text.split('\n')
+  const items: LineItem[] = []
+  
+  // Find the service description section
+  let inServiceSection = false
+  let currentService = ''
+  
+  for (const line of lines) {
+    // Start capturing after "Service Description"
+    if (line.includes('Service Description')) {
+      inServiceSection = true
+      continue
+    }
+    
+    if (inServiceSection) {
+      const dollarMatch = line.match(/\$(\d+\.\d{2})/)
+      if (dollarMatch) {
+        // Look for "MONTHLY COST" in the line or previous lines
+        const serviceMatch = line.match(/MONTHLY COST/)
+        if (serviceMatch || currentService.includes('MONTHLY COST')) {
+          items.push({
+            service: 'MONTHLY COST',
+            price: dollarMatch[1]
+          })
+          
+          // If we found both monthly charges, we're done
+          if (items.length === 2) {
+            break
+          }
+        }
+      } else if (line.trim()) {
+        // Accumulate service description lines that don't have dollar amounts
+        currentService = line.trim()
+      }
+    }
+  }
+
+  // If we only found one item but the total suggests two, duplicate it
+  if (items.length === 1) {
+    items.push({ ...items[0] })
+  }
+
+  return items
+}
+
 async function analyzePdf(pdfPath: string): Promise<PdfAnalysis | null> {
   try {
     const { text } = await extractTextFromPdf(pdfPath)
@@ -208,6 +265,22 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
     // Creates a PDF Services instance
     const pdfServices = new PDFServices({ credentials })
 
+    // Extract text to get line items
+    const { text } = await extractTextFromPdf(pdfPath)
+    const lineItems = await extractLineItems(text)
+
+    // Calculate base prices without tax
+    const itemsWithoutTax = lineItems.map(item => ({
+      service: item.service,
+      price: (Number(item.price) / (1 + TAX_RATE)).toFixed(2)
+    }))
+
+    // Extract invoice details using regex
+    const invoiceMatch = text.match(/Invoice # (\d+)/)
+    const dateMatch = text.match(/Date: (\d{2}\/\d{2}\/\d{4})/)
+    const timeMatch = text.match(/Time: ([\d:]+\s*[APM]+)/)
+    const addressMatch = text.match(/(\d+\s+[^,]+),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)/)
+
     // Creates an asset from source file and upload
     readStream = fs.createReadStream(templatePath)
     const inputAsset = await pdfServices.upload({
@@ -215,20 +288,16 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
       mimeType: MimeType.DOCX
     })
 
-    // Read the template data
-    console.log(`\nReading template data from: ${templateDataPath}`)
-    const templateData = JSON.parse(fs.readFileSync(templateDataPath, 'utf8'))
+    // Prepare template data with exact variable names matching the template
+    const templateData: TemplateData = {
+      items: itemsWithoutTax,
+      subtotal: analysis.baseAmount.toFixed(2),
+      tax: analysis.taxAmount.toFixed(2),
+      paid: analysis.totalAmount.toFixed(2)
+    }
 
-    // Update the amounts in the template data
-    const monthlyBase = analysis.baseAmount / 2
-    templateData.invoice.items[0].price = monthlyBase.toFixed(2)
-    templateData.invoice.items[1].price = monthlyBase.toFixed(2)
-    templateData.invoice.subtotal = analysis.baseAmount.toFixed(2)
-    templateData.invoice.tax = analysis.taxAmount.toFixed(2)
-    templateData.invoice.amountPaid = analysis.totalAmount.toFixed(2)
-
-    // Save the updated template data to dated file
-    console.log(`\nSaving updated template data to: ${datedTemplateDataPath}`)
+    // Save the template data for debugging/reference
+    console.log(`\nSaving template data to: ${datedTemplateDataPath}`)
     fs.writeFileSync(datedTemplateDataPath, JSON.stringify(templateData, null, 2))
 
     // Create parameters for the job
@@ -267,7 +336,11 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
 
     if (analysis.needsFixing) {
       console.log('\nChanges made:')
-      console.log(`- Removed baked-in tax from line items (from $${(analysis.baseAmount / 2 * (1 + TAX_RATE)).toFixed(2)} to $${(analysis.baseAmount / 2).toFixed(2)} each)`)
+      for (let i = 0; i < itemsWithoutTax.length; i++) {
+        const original = lineItems[i]
+        const fixed = itemsWithoutTax[i]
+        console.log(`- Line item "${fixed.service}": $${original.price} → $${fixed.price}`)
+      }
       console.log(`- Updated subtotal to $${analysis.baseAmount.toFixed(2)}`)
       console.log(`- Added sales tax line of $${analysis.taxAmount.toFixed(2)}`)
       console.log(`- Total remains $${analysis.totalAmount.toFixed(2)}`)
