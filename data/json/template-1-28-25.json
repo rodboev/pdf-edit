@@ -1,18 +1,16 @@
 {
-  "items": {
-    "itemTable": [
-      {
-        "service": "MONTHLY COST",
-        "quantity": "1.00",
-        "price": "200.00"
-      },
-      {
-        "service": "NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE",
-        "quantity": "1.00",
-        "price": "200.00"
-      }
-    ]
-  },
+  "services": [
+    {
+      "service": "MONTHLY COST",
+      "quantity": "1.00",
+      "price": "200.00"
+    },
+    {
+      "service": "NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE",
+      "quantity": "1.00",
+      "price": "200.00"
+    }
+  ],
   "subtotal": "400.00",
   "tax": "35.50",
   "paid": "435.50"

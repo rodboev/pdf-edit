@@ -57,13 +57,11 @@ interface LineItem {
 }
 
 interface TemplateData {
-  items: {
-    itemTable: Array<{
-      service: string
-      quantity: string
-      price: string
-    }>
-  }
+  services: Array<{
+    service: string
+    quantity: string
+    price: string
+  }>
   subtotal: string
   tax: string
   paid: string
@@ -144,6 +142,11 @@ async function extractTextFromPdf(pdfPath: string): Promise<ExtractedData> {
       .map((el: any) => el.Text)
       .join(' ')
     
+    // Save the structured JSON for review
+    const structuredJsonPath = path.join(rootDir, "data", "json", `structured-${dateString}.json`)
+    fs.writeFileSync(structuredJsonPath, jsonContent)
+    console.log(`\nSaved structured JSON to: ${structuredJsonPath}`)
+    
     console.log('\nExtracted Text from PDF:')
     console.log(text)
     
@@ -159,31 +162,64 @@ async function extractTextFromPdf(pdfPath: string): Promise<ExtractedData> {
 async function extractLineItems(text: string): Promise<LineItem[]> {
   const items: LineItem[] = []
   
-  // Find the service description section
-  const serviceSection = text.match(/Service Description.*?SUBTOTAL/s)?.[0] || ''
+  // Get the structured JSON path
+  const structuredJsonPath = path.join(rootDir, "data", "json", `structured-${dateString}.json`)
+  const structuredJson = JSON.parse(fs.readFileSync(structuredJsonPath, 'utf8'))
   
-  // Extract line items using regex
-  const lineItemRegex = /MONTHLY COST\s+1\.00\s+\$(\d+\.\d{2})|NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE\s+1\.00\s+\$(\d+\.\d{2})/g
-  let match
+  console.log('\nProcessing Service Section from structured JSON')
   
-  console.log('\nProcessing Service Section:')
-  console.log(serviceSection)
-  
-  while ((match = lineItemRegex.exec(serviceSection)) !== null) {
-    const price = match[1] || match[2]
-    const service = match[0].includes('MONTHLY COST') 
-      ? 'MONTHLY COST'
-      : 'NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE'
+  // Find all table row elements that contain service descriptions or prices
+  const tableElements = structuredJson.elements.filter((el: any) => 
+    el.Path && 
+    el.Path.startsWith('//Document/Sect/Table/TR') && 
+    el.Text &&
+    !el.Path.includes('TH') && // Exclude header rows
+    !el.Text.includes('CUSTOMER SIGNATURE') // Exclude signature row
+  )
+
+  // Group elements by row index
+  const rowGroups = new Map<number, any[]>()
+  for (const el of tableElements) {
+    const rowMatch = el.Path.match(/TR\[(\d+)\]/)
+    if (rowMatch) {
+      const rowIndex = parseInt(rowMatch[1])
+      if (!rowGroups.has(rowIndex)) {
+        rowGroups.set(rowIndex, [])
+      }
+      rowGroups.get(rowIndex)?.push(el)
+    }
+  }
+
+  // Process each row group
+  for (const [_, elements] of rowGroups) {
+    // Find service element (TD with Path ending in /P)
+    const serviceEl = elements.find(el => 
+      el.Path.endsWith('/TD/P') && 
+      !el.Text.includes('$') && 
+      !el.Text.includes('SUBTOTAL') &&
+      !el.Text.includes('CUSTOMER SIGNATURE') // Extra check for signature
+    )
     
-    console.log(`\nFound line item:`)
-    console.log(`- Service: ${service}`)
-    console.log(`- Price: ${price}`)
+    // Find price element (TD with $ in text)
+    const priceEl = elements.find(el => el.Text.includes('$'))
     
-    items.push({
-      service,
-      price,
-      quantity: "1.00"
-    })
+    if (serviceEl && priceEl) {
+      const service = serviceEl.Text.trim()
+      const price = priceEl.Text.replace('$', '').trim()
+      
+      // Only add if it's a valid service (not a quantity or other text)
+      if (service && !service.match(/^\d+(\.\d+)?$/)) {
+        console.log(`\nFound line item:`)
+        console.log(`- Service: "${service}"`)
+        console.log(`- Price: ${price}`)
+        
+        items.push({
+          service,
+          price,
+          quantity: "1.00"
+        })
+      }
+    }
   }
 
   console.log('\nExtracted Line Items:')
@@ -253,6 +289,19 @@ function logAnalysis(name: string, analysis: PdfAnalysis) {
   console.log(`- Actual Tax Rate: ${analysis.taxRate.toFixed(3)}%`)
 }
 
+async function generateTemplateData(analysis: PdfAnalysis, lineItems: LineItem[]): Promise<TemplateData> {
+  return {
+    services: lineItems.map(item => ({
+      service: item.service,
+      quantity: item.quantity,
+      price: item.price
+    })),
+    subtotal: analysis.baseAmount.toFixed(2),
+    tax: analysis.taxAmount.toFixed(2),
+    paid: analysis.totalAmount.toFixed(2)
+  }
+}
+
 async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
   let readStream
   try {
@@ -287,14 +336,7 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
     })
 
     // Prepare template data with exact variable names matching the template
-    const templateData: TemplateData = {
-      items: {
-        itemTable: itemsWithoutTax
-      },
-      subtotal: analysis.baseAmount.toFixed(2),
-      tax: analysis.taxAmount.toFixed(2),
-      paid: analysis.totalAmount.toFixed(2)
-    }
+    const templateData = await generateTemplateData(analysis, itemsWithoutTax)
 
     // Add debug logging
     console.log('\nTemplate Data Structure:')
