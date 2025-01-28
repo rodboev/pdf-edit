@@ -53,10 +53,17 @@ interface ExtractedData {
 interface LineItem {
   service: string
   price: string
+  quantity: string
 }
 
 interface TemplateData {
-  items: LineItem[]
+  items: {
+    itemTable: Array<{
+      service: string
+      quantity: string
+      price: string
+    }>
+  }
   subtotal: string
   tax: string
   paid: string
@@ -137,6 +144,9 @@ async function extractTextFromPdf(pdfPath: string): Promise<ExtractedData> {
       .map((el: any) => el.Text)
       .join(' ')
     
+    console.log('\nExtracted Text from PDF:')
+    console.log(text)
+    
     return { text, jsonContent }
   } catch (err) {
     console.error('Error extracting text from PDF:', err)
@@ -147,47 +157,37 @@ async function extractTextFromPdf(pdfPath: string): Promise<ExtractedData> {
 }
 
 async function extractLineItems(text: string): Promise<LineItem[]> {
-  const lines = text.split('\n')
   const items: LineItem[] = []
   
   // Find the service description section
-  let inServiceSection = false
-  let currentService = ''
+  const serviceSection = text.match(/Service Description.*?SUBTOTAL/s)?.[0] || ''
   
-  for (const line of lines) {
-    // Start capturing after "Service Description"
-    if (line.includes('Service Description')) {
-      inServiceSection = true
-      continue
-    }
+  // Extract line items using regex
+  const lineItemRegex = /MONTHLY COST\s+1\.00\s+\$(\d+\.\d{2})|NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE\s+1\.00\s+\$(\d+\.\d{2})/g
+  let match
+  
+  console.log('\nProcessing Service Section:')
+  console.log(serviceSection)
+  
+  while ((match = lineItemRegex.exec(serviceSection)) !== null) {
+    const price = match[1] || match[2]
+    const service = match[0].includes('MONTHLY COST') 
+      ? 'MONTHLY COST'
+      : 'NEW ACCOUNT EQUIPMENT OR SPECIAL SERVICE'
     
-    if (inServiceSection) {
-      const dollarMatch = line.match(/\$(\d+\.\d{2})/)
-      if (dollarMatch) {
-        // Look for "MONTHLY COST" in the line or previous lines
-        const serviceMatch = line.match(/MONTHLY COST/)
-        if (serviceMatch || currentService.includes('MONTHLY COST')) {
-          items.push({
-            service: 'MONTHLY COST',
-            price: dollarMatch[1]
-          })
-          
-          // If we found both monthly charges, we're done
-          if (items.length === 2) {
-            break
-          }
-        }
-      } else if (line.trim()) {
-        // Accumulate service description lines that don't have dollar amounts
-        currentService = line.trim()
-      }
-    }
+    console.log(`\nFound line item:`)
+    console.log(`- Service: ${service}`)
+    console.log(`- Price: ${price}`)
+    
+    items.push({
+      service,
+      price,
+      quantity: "1.00"
+    })
   }
 
-  // If we only found one item but the total suggests two, duplicate it
-  if (items.length === 1) {
-    items.push({ ...items[0] })
-  }
+  console.log('\nExtracted Line Items:')
+  console.log(JSON.stringify(items, null, 2))
 
   return items
 }
@@ -272,14 +272,12 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
     // Calculate base prices without tax
     const itemsWithoutTax = lineItems.map(item => ({
       service: item.service,
+      quantity: "1.00",
       price: (Number(item.price) / (1 + TAX_RATE)).toFixed(2)
     }))
 
-    // Extract invoice details using regex
-    const invoiceMatch = text.match(/Invoice # (\d+)/)
-    const dateMatch = text.match(/Date: (\d{2}\/\d{2}\/\d{4})/)
-    const timeMatch = text.match(/Time: ([\d:]+\s*[APM]+)/)
-    const addressMatch = text.match(/(\d+\s+[^,]+),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)/)
+    console.log('\nProcessed Line Items:')
+    console.log(JSON.stringify(itemsWithoutTax, null, 2))
 
     // Creates an asset from source file and upload
     readStream = fs.createReadStream(templatePath)
@@ -290,11 +288,17 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
 
     // Prepare template data with exact variable names matching the template
     const templateData: TemplateData = {
-      items: itemsWithoutTax,
+      items: {
+        itemTable: itemsWithoutTax
+      },
       subtotal: analysis.baseAmount.toFixed(2),
       tax: analysis.taxAmount.toFixed(2),
       paid: analysis.totalAmount.toFixed(2)
     }
+
+    // Add debug logging
+    console.log('\nTemplate Data Structure:')
+    console.log(JSON.stringify(templateData, null, 2))
 
     // Save the template data for debugging/reference
     console.log(`\nSaving template data to: ${datedTemplateDataPath}`)
@@ -324,7 +328,7 @@ async function generatePDF(pdfPath: string, analysis: PdfAnalysis) {
     fs.mkdirSync(path.dirname(outputPath), { recursive: true })
 
     // Save the result to file
-    console.log(`\nSaving ${path.basename(pdfPath)} to ${outputPath}`)
+    console.log(`\nSaving output to: ${outputPath}`)
     
     const writeStream = fs.createWriteStream(outputPath)
     await new Promise((resolve, reject) => {
